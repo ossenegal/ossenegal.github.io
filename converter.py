@@ -1,4 +1,4 @@
-import urllib, csv
+import urllib, csv , operator
 url= "https://raw.github.com/ossenegal/ossenegal.github.io/master/survey/2012.csv"
 def run():
     r = urllib.urlopen(url)
@@ -16,7 +16,13 @@ def run():
             out[key] = float(out[key]) + float(dic[key])
         else:
             out[key] = float(dic[key])
-    print out
+    total = sum(out.values())
+    print total
+    for  key, val in out.items():
+        out[key]= (out[key] /total)*100
+    out = sorted(out.iteritems(), key=operator.itemgetter(1))[-5:]
+
+    print  out
     """
     {'iPad': 21.850000000000001, 'SymbianOS': 72.699999999999989, 'Windows': 1626.47
     , 'iPod': 16.390000000000001, 'iOS': 157.0, 'Autre': 39.43, 'BlackBerry': 13.110
@@ -43,7 +49,7 @@ def run():
     js_data = "var DataSet=\
             [ \
     "
-    for  key, value in out.items():
+    for  key, value in out:
         js_data  =  js_data + tpl % (key, value)
     import re
     js_data = re.sub(",$", "]", js_data )
