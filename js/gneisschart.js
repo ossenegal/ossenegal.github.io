@@ -62,6 +62,7 @@ Gneiss.defaultGneissChartConfig = {
 		{
 			name: "apples",
 			data: [5.5,10.2,6.1,3.8],
+ 			//data :catalogDatas ,
 			source: "Some Org",
 			type: "line",
 			axis: 0,
@@ -72,6 +73,7 @@ Gneiss.defaultGneissChartConfig = {
 		{
 			name: "names",
 			data: ["juicyness","color","flavor","travelability"]
+			//data :catalogLabels 
 		}
 	],
 	sourceline: "",

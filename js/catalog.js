@@ -1,0 +1,1 @@
+var catalogLabels  = ["Android","iOS","Macintosh","Linux","Windows"],    catalogDatas   = [4.535,6.03846153846,7.17923076923,12.2288461538,62.5565384615]

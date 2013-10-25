@@ -21,39 +21,13 @@ def run():
     for  key, val in out.items():
         out[key]= (out[key] /total)*100
     out = sorted(out.iteritems(), key=operator.itemgetter(1))[-5:]
-
-    print  out
-    """
-    {'iPad': 21.850000000000001, 'SymbianOS': 72.699999999999989, 'Windows': 1626.47
-    , 'iPod': 16.390000000000001, 'iOS': 157.0, 'Autre': 39.43, 'BlackBerry': 13.110
-    000000000001, 'iPhone': 26.57, 'Linux': 317.94999999999993, 'Android': 117.91, '
-    Windows Phone': 3.96, 'Macintosh': 186.65999999999997}
-    """
-    # Format for js
-    # create js file like this
-    # var DataSet: [
-    #    {
-    #      "x": "Pepperoni",
-    #      "y": 12
-    #    },
-    #    {
-    #      "x": "Cheese",
-    #      "y": 8
-    #   }
-    # ]
-    tpl ="""
-    {
-         "x": "%s",
-         "y": %s
-    } ,"""
-    js_data = "var DataSet=\
-            [ \
-    "
-    for  key, value in out:
-        js_data  =  js_data + tpl % (key, value)
-    import re
-    js_data = re.sub(",$", "]", js_data )
-    print js_data
+    js_data = "var catalogLabels  = ["  +  ",".join(
+                    ["\"%s\"" % str(x) for x, y in out]
+    ) + "],\
+    catalogDatas   = ["  +  ",".join(
+                    [  str(y) for x, y in out]
+    )   +   "]"
+    
     open("js/catalog.js", "wb").write(js_data)
 if __name__== "__main__":
   run()
