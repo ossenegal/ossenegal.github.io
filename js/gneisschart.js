@@ -60,9 +60,10 @@ Gneiss.defaultGneissChartConfig = {
 	],
 	series: [
 		{
-			name: "apples",
+			//name: "apples",
+                  name  :Annees[Annees.length-1].annee,
 			//data: [5.5,10.2,6.1,3.8],
- 			data :catalogDatas ,
+			data  :Annees[Annees.length-1].value,
 			source: "Some Org",
 			type: "line",
 			axis: 0,
@@ -73,7 +74,8 @@ Gneiss.defaultGneissChartConfig = {
 		{
 			name: "names",
 			//data: ["juicyness","color","flavor","travelability"]
-			data :catalogLabels 
+			data  :Annees[Annees.length-1].data
+
 		}
 	],
 	sourceline: "",

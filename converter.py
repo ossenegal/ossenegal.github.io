@@ -25,7 +25,7 @@ def run(url):
                  reverse=True)
     js_data = "\
 \n{\
-\n annee: " + url.split('/')[-1].replace(".csv", "")       + ", \
+\n annee: " + "\"%s\"" % url.split('/')[-1].replace(".csv", "")       + ", \
 \n data : [" +  ",".join(["\"%s\"" % str(x) for x, y in out]) + "],\
 \n value: [" +  ",".join([str(y) for x, y in out ]) + "]\
 \n }\
@@ -33,7 +33,7 @@ def run(url):
     return js_data
 
 def runs():
-    js_data = "Annees : ["
+    js_data = "var Annees = ["
     for url in urls:
         js_data  += run(url)
     #
